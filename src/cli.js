@@ -13,7 +13,6 @@ async function ask(prompt) {
   });
 
   const reader = response.body.getReader();
-  let text = "";
 
   while (true) {
     const { done, value } = await reader.read();
@@ -21,7 +20,6 @@ async function ask(prompt) {
 
     const chunk = new TextDecoder().decode(value);
     process.stdout.write(chunk);
-    text += chunk;
   }
 
   console.log("\n");
